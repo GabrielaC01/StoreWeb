@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
 public class LoginSteps {
 
     private WebDriver driver;
@@ -32,8 +31,7 @@ public class LoginSteps {
     public void typeUser(String user){
         WebElement userInputElement = driver.findElement(LoginPage.userInput);
         userInputElement.sendKeys(user);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(444));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPage.loginButton));
     }
 
@@ -48,8 +46,16 @@ public class LoginSteps {
     /**
      * Hacer click en el botón login
      */
-    public void login(){
-        this.driver.findElement(LoginPage.loginButton).click();
+    public void login() {
+        driver.findElement(LoginPage.loginButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(LoginPage.loginExito));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPage.loginExito));
+            System.out.println("Login exitoso");
+        } catch (Exception e) {
+            System.out.println("Login fallido");
+        }
     }
 
     /**
@@ -57,7 +63,7 @@ public class LoginSteps {
      */
     public String getErrorMessage() {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
             WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPage.loginError));
             return errorElement.getText().trim();
         } catch (Exception e) {

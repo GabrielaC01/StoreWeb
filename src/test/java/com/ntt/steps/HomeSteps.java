@@ -22,8 +22,16 @@ public class HomeSteps {
      * @param categoria nombre de la categoría
      */
     public void seleccionarCategoria(String categoria) {
-        WebElement categoriaElement = wait.until(ExpectedConditions.elementToBeClickable(HomePage.category));
-        categoriaElement.click();
+        try {
+            if (!categoria.equalsIgnoreCase("Clothes")) {
+                org.junit.jupiter.api.Assertions.fail("La categoría '" + categoria + "' no existe en la tienda");
+            }
+            WebElement categoriaElement = wait.until(ExpectedConditions.elementToBeClickable(HomePage.category));
+            categoriaElement.click();
+
+        } catch (Exception e) {
+            org.junit.jupiter.api.Assertions.fail("Ocurrió un error al intentar seleccionar la categoría: " + categoria);
+        }
     }
 
     /**
@@ -31,8 +39,15 @@ public class HomeSteps {
      * @param subcategoria nombre de la subcategoría
      */
     public void seleccionarSubcategoria(String subcategoria) {
-        WebElement subcategoriaElement = wait.until(ExpectedConditions.elementToBeClickable(HomePage.subcategory));
-        subcategoriaElement.click();
+        try {
+            if (!subcategoria.equalsIgnoreCase("Men")) {
+                org.junit.jupiter.api.Assertions.fail("La subcategoría '" + subcategoria + "' no existe en la tienda");
+            }
+            WebElement subcategoriaElement = wait.until(ExpectedConditions.elementToBeClickable(HomePage.subcategory));
+            subcategoriaElement.click();
+        } catch (Exception e) {
+            org.junit.jupiter.api.Assertions.fail("Ocurrió un error al intentar seleccionar la subcategoría: " + subcategoria);
+        }
     }
 
 }

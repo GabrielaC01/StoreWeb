@@ -1,17 +1,12 @@
 package com.ntt.stepsdefinitions;
 
 import com.ntt.steps.*;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 import static com.ntt.core.DriverManager.getDriver;
 import static com.ntt.core.DriverManager.screenShot;
@@ -39,7 +34,7 @@ public class ProductStepsDef {
         if (!mensajeError.isEmpty()) {
             System.out.println("Error de autenticación detectado: " + mensajeError);
             org.junit.jupiter.api.Assertions.assertEquals("Error de autenticación.", mensajeError, "El mensaje de error no es el esperado");
-            org.junit.jupiter.api.Assumptions.assumeTrue(false, "Login inválido, se detiene el flujo");
+            Assertions.fail("Error de autenticación: Login inválido, se detiene el flujo");
         }
     }
 

@@ -10,4 +10,5 @@ public class LoginPage {
     public static By passInput = By.id("field-password");
     public static By loginButton = By.id("submit-login");
     public static By loginError = By.xpath("//li[@class='alert alert-danger']");
+    public static By loginExito = By.cssSelector("a.logout.hidden-sm-down[href*='mylogout']");
 }
