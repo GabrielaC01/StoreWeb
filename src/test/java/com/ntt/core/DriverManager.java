@@ -32,7 +32,7 @@ public class DriverManager {
 
     @After
     public void quitDriver(){
-       // driver.quit();
+       driver.quit();
     }
 
     public static void screenShot(){
