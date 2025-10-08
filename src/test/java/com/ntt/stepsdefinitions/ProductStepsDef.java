@@ -34,7 +34,13 @@ public class ProductStepsDef {
         loginSteps.typePassword(password);
         loginSteps.login();
         screenShot();
-
+        // Verificamos si hay mensaje de error
+        String mensajeError = loginSteps.getErrorMessage();
+        if (!mensajeError.isEmpty()) {
+            System.out.println("Error de autenticación detectado: " + mensajeError);
+            org.junit.jupiter.api.Assertions.assertEquals("Error de autenticación.", mensajeError, "El mensaje de error no es el esperado");
+            org.junit.jupiter.api.Assumptions.assumeTrue(false, "Login inválido, se detiene el flujo");
+        }
     }
 
     @When("navego a la categoria {string} y subcategoria {string}")

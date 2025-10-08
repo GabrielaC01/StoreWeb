@@ -52,4 +52,17 @@ public class LoginSteps {
         this.driver.findElement(LoginPage.loginButton).click();
     }
 
+    /**
+     * Retorna el mensaje de error si el login falla
+     */
+    public String getErrorMessage() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebElement errorElement = wait.until(ExpectedConditions.visibilityOfElementLocated(LoginPage.loginError));
+            return errorElement.getText().trim();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
 }

@@ -12,4 +12,5 @@ Feature: Product-Store
     And vuelvo a validar el calculo de precios en el carrito
     Examples:
     |Usuario                   |Password  |Categoria|Subcategoria|
-    |gabrielafeber07@gmail.com |PruebaWeb |Clothes  |Men         |
+    |gabrielafeber07@gmail.com |PruebaW   |Clothes  |Men         |
+

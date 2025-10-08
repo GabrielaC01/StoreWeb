@@ -4,8 +4,8 @@
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
 # Chrome drivers
-drivers/chrome/**
-!drivers/chrome/.gitkeep
+drivers/**
+!drivers/.gitkeep
 
 #Captcha
 captcha/**
